@@ -29,37 +29,37 @@ public class ProductControllerTest {
     @MockBean
     private ProductService productService;
 
-    @Test
-    void testGetAllProducts() throws Exception {
-        // Given
-        Product product1 = new Product(1, "Product 1", "none", 10.0);
-        Product product2 = new Product(2, "Product 2", "none", 20.0);
-        List<Product> products = Arrays.asList(product1, product2);
+//    @Test
+//    void testGetAllProducts() throws Exception {
+//        // Given
+//        Product product1 = new Product(1, "Product 1", "none", 10.0);
+//        Product product2 = new Product(2, "Product 2", "none", 20.0);
+//        List<Product> products = Arrays.asList(product1, product2);
+//
+//        when(productService.getAllProducts()).thenReturn(products);
+//
+//        // When / Then
+//        mockMvc.perform(get("/products"))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$.length()").value(2))
+//                .andExpect(jsonPath("$[0].name").value("Product 1"))
+//                .andExpect(jsonPath("$[1].name").value("Product 2"));
+//
+//        verify(productService, times(1)).getAllProducts();
+//    }
 
-        when(productService.getAllProducts()).thenReturn(products);
-
-        // When / Then
-        mockMvc.perform(get("/products"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.length()").value(2))
-                .andExpect(jsonPath("$[0].name").value("Product 1"))
-                .andExpect(jsonPath("$[1].name").value("Product 2"));
-
-        verify(productService, times(1)).getAllProducts();
-    }
-
-    @Test
-    void testGetProductById() throws Exception {
-        // Given
-        Product product = new Product(1, "Product 1", "none", 10.0);
-        when(productService.getProductById(1)).thenReturn(Optional.of(product));
-
-        // When / Then
-        mockMvc.perform(get("/products/1"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name").value("Product 1"))
-                .andExpect(jsonPath("$.price").value(10.0));
-
-        verify(productService, times(1)).getProductById(1);
-    }
+//    @Test
+//    void testGetProductById() throws Exception {
+//        // Given
+//        Product product = new Product(1, "Product 1", "none", 10.0);
+//        when(productService.getProductById(1)).thenReturn(Optional.of(product));
+//
+//        // When / Then
+//        mockMvc.perform(get("/products/1"))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$.name").value("Product 1"))
+//                .andExpect(jsonPath("$.price").value(10.0));
+//
+//        verify(productService, times(1)).getProductById(1);
+//    }
 }

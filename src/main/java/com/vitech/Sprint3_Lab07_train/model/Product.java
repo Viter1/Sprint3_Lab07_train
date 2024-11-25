@@ -1,9 +1,6 @@
 package com.vitech.Sprint3_Lab07_train.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +15,27 @@ public class Product {
     private String name;
     private String description;
     private Double price;
+
+    @Lob
+    @Column(columnDefinition = "MEDIUMBLOB")
+    private String image; // Este campo almacenará la imagen en formato Base64
+
+    public String getImage() {
+        return image; // Devuelve la imagen en Base64
+    }
+
+    public void setImage(String image) {
+        this.image = image; // Establece la imagen en formato Base64
+    }
+
+    // Constructor vacío
+    public Product() {}
+
+    public Product(Integer id, String name, String image) {
+        this.id = id;
+        this.name = name;
+        this.image = image;
+    }
 
     // Getters and Setters
 
